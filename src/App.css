@@ -1,0 +1,8 @@
+.app {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    font-size: calc(10px + 1vmin);
+    flex-direction: column;
+    justify-content: center;
+  }

@@ -1,0 +1,44 @@
+.dashboard-title{
+    background-color: #6c757ded;
+    color: white;
+}
+.canvas-body{
+    background-color: #6c757ded !important;
+}
+.canvas-links a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.canvas-links a:hover{
+ background-color:  white;
+ color: #003399;
+}
+.logout-btn:hover{
+ color: rgb(237, 26, 26) !important;
+}
+.canvas-btn{
+ background-color: #003399 !important;
+ border: 0px !important;
+}
+.canvas-btn:hover{
+    background-color: #1148b6 !important;
+}
+.nav-active{
+background-color:  white;
+color: #003399 !important;
+}
+
+.search-btn:hover{
+ background-color: 	#239573 !important;
+}
+.delete-btn{
+    text-decoration: none ;
+    background-color: rgb(201, 26, 26) !important;
+}
+.delete-btn:hover{
+    background-color: rgb(237, 26, 26)  !important;
+}
+
+
+  

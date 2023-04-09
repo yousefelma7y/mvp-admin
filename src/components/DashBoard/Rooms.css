@@ -1,0 +1,42 @@
+.single-score {
+display: flex;
+justify-content: space-between;
+padding: 1vw 2vw;
+border-top: solid black 1px;
+}
+.prize-icon {
+width: 2em;
+height: 2em;
+margin-right: 0.5em;
+}
+.add-btn:hover{
+background-color: 	#0aafe5 !important;
+}   
+.not-active:hover{
+    background-color: rgb(219, 219, 219) !important;
+} 
+.not-active:hover .date{
+    color: rgb(24, 23, 23) !important;
+} 
+.active:hover{
+    background-color: rgb(27, 177, 102) !important;
+} 
+.load-btn{
+    background-color: #a881af !important; 
+}
+.load-btn:hover{
+    background-color: #80669d !important; 
+}
+.form-control-invalid{
+    border: 1px solid red !important;
+}
+.selected-notActive-room {
+    background-color: rgb(219, 219, 219);
+}
+
+@media only screen and (max-width: 378px) {
+.date {
+    font-size: 12px;
+}
+}
+
