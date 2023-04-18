@@ -21,7 +21,7 @@ const AddRoom = () => {
   const [PrizeEndDate, setPrizeEndDate] = useState('');
   const [rank, setRank] = useState('');
 
-  const [playerList, setplayerList] = useState([]);
+  // const [playerList, setplayerList] = useState([]);
   const [player, setPlayer] = useState('');
   const [prizerangeList, setPrizerangeList] = useState([]);
   const [prizerange, setPrizerange] = useState('');
@@ -29,10 +29,10 @@ const AddRoom = () => {
   const token = GetCookie("Token");
   const url = "https://coral-app-35v54.ondigitalocean.app/rooms";
 
-  const addPlayerHandler = () => {
-    playerList.push(player)
-    setPlayer('')
-  }
+  // const addPlayerHandler = () => {
+  //   playerList.push(player)
+  //   setPlayer('')
+  // }
   const addPrizeHandler = () => {
     prizerangeList.push({'rank': rank , 'value' : prizerange})
     setPrizerange('')
@@ -41,46 +41,37 @@ const AddRoom = () => {
 
   const formSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(
-      {'name': roomName,
-      'startDate': startDate,
-      'endDate': endDate,
-      'players': playerList,
-      'prizeRanges': prizerangeList,
-      'prizeStartDate' : PrizeStartDate ,
-      'prizeEndDate' : PrizeEndDate}
-    )
-    // setIsLoading(true);
-    // try {
-    //   setError(null);
-    //   const response = await axios.post(
-    //     url,
-    //     {
-    //       name: roomName,
-    //       startDate: startDate,
-    //       endDate: endDate,
-    //       players: playerList,
-    //       prizeRanges: prizerangeList,
-    //       prizeStartDate : PrizeStartDate ,
-    //       prizeEndDate : PrizeEndDate
-    //     },
-    //     {
-    //       headers: {
-    //         'Authorization': `Bearer ${token}`,
-    //         'Content-Type': 'application/json'
-    //       }
-    //     }
-    //   );
-    //   const responseData = await response;
-    //   console.log(responseData.data);
-    //   setIsLoading(false);
-    // }
-    // catch (err) {
-    //   console.log(err);
-    //   setIsLoading(false);
-    //   setError(err.response.data.error || "SomeThing Went Wrong , Please Try Again .");
-    // }
-    // setRoomName(''); setEndDate(''); setStartDate('');
+    setIsLoading(true);
+    try {
+      setError(null);
+      const response = await axios.post(
+        url,
+        {
+          name: roomName,
+          startDate: startDate,
+          endDate: endDate,
+          playerCount: player,
+          prize: prizerangeList,
+          paymentStart : PrizeStartDate ,
+          paymentEnd : PrizeEndDate
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      const responseData = await response;
+      console.log(responseData.data);
+      setIsLoading(false);
+    }
+    catch (err) {
+      console.log(err);
+      setIsLoading(false);
+      setError(err.response.data.error || "SomeThing Went Wrong , Please Try Again .");
+    }
+    setRoomName(''); setEndDate(''); setStartDate('');
   }
 
   return (
@@ -110,13 +101,13 @@ const AddRoom = () => {
             placeholder="Room Name" />
 
           <label className='fw-bold fs-3 col-sm-5 col-10 m-1 text-start'>Players : </label>
-          <input type='name'
+          <input type='number'
             value={player}
-            onChange={(e) => { setPlayer(e.target.value) }}
-            className='col-sm-4 col-8 m-1 border-0 rounded p-2' placeholder="Add Players" />
-          <Button className='col-sm-1 col-2 bg-success border-0 fs-3 m-1' onClick={addPlayerHandler}>
+            onChange={(e) => {setPlayer(e.target.value) }}
+            className='col-sm-5 col-10 m-1 border-0 rounded p-2' placeholder="Players Number" />
+          {/* <Button className='col-sm-1 col-2 bg-success border-0 fs-3 m-1' onClick={addPlayerHandler}>
             <BsPersonFillAdd />
-          </Button>
+          </Button> */}
 
           <label className='fw-bold fs-3 col-sm-4 col-10 m-1 text-start px-5'>Prizes : </label>
           <select 
@@ -155,7 +146,7 @@ const AddRoom = () => {
 
 
           <Row className='justify-content-center p-3 '>
-            <Button disabled={!roomName || !startDate || !endDate || !PrizeStartDate || !PrizeEndDate || playerList.length === 0 || prizerangeList.length === 0}
+            <Button disabled={!roomName || !startDate || !endDate || !PrizeStartDate || !PrizeEndDate || !player || prizerangeList.length === 0}
               type='submit' className='col-md-3 col-5 p-2 mx-2 fw-bold'>
               Add Room
             </Button>
@@ -166,7 +157,7 @@ const AddRoom = () => {
           </Row>
         </form>
       </Row>
-      <PlayersCharts />
+      {/* <PlayersCharts /> */}
     </>
   )
 }

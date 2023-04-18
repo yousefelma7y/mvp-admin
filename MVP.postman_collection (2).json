@@ -1,0 +1,460 @@
+{
+	"info": {
+		"_postman_id": "6512c6d5-b7da-4193-8fcd-520acb5c9cd2",
+		"name": "MVP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2704375"
+	},
+	"item": [
+		{
+			"name": "room",
+			"item": [
+				{
+					"name": "Create room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"rooom test 222\",\n    \"startDate\": \"2023-04-01\",\n    \"endDate\": \"2023-04-07\",\n    \"players\": 20,\n    \"paymentStart\": \"2023-04-08\",\n    \"paymentEnd\": \"2023-04-15\",\n    \"prize\": [\n        {\n            \"rank\": 1,\n            \"value\": 300\n        },\n        {\n            \"rank\": 2,\n            \"value\": 250\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/rooms",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get room by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/rooms/:id",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"rooms",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6431ef16f19d04a99e41812a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateRoom",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"yousef rome\",\n    \"startDate\": \"2023-04-01\",\n    \"endDate\": \"2023-04-07\",\n    \"players\": 21,\n    \"paymentStart\": \"2023-04-08\",\n    \"paymentEnd\": \"2023-04-15\",\n    \"prize\": [\n        {\n            \"rank\": 1,\n            \"value\": 300\n        },\n        {\n            \"rank\": 2,\n            \"value\": 250\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/rooms/:roomId",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"rooms",
+								":roomId"
+							],
+							"variable": [
+								{
+									"key": "roomId",
+									"value": "6431ef16f19d04a99e41812a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete room",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"rooom test 222\",\n    \"startDate\": \"2023-04-01\",\n    \"endDate\": \"2023-04-07\",\n    \"players\": 20,\n    \"paymentStart\": \"2023-04-08\",\n    \"paymentEnd\": \"2023-04-15\",\n    \"prize\": [\n        {\n            \"rank\": 1,\n            \"value\": 300\n        },\n        {\n            \"rank\": 2,\n            \"value\": 250\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/rooms/64131e63aa9bce7b53e17dab",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"rooms",
+								"64131e63aa9bce7b53e17dab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add players",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"players\":[\"mostafa7\",\"ziad3\",\"midosameh\",\"joo\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/rooms/:roomId/players",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"rooms",
+								":roomId",
+								"players"
+							],
+							"variable": [
+								{
+									"key": "roomId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "room-details",
+			"item": [
+				{
+					"name": "claim-player",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rank\":4,\n    \"value\":100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/rooms/:id/details/:detailsId/claim",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"rooms",
+								":id",
+								"details",
+								":detailsId",
+								"claim"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6431ef16f19d04a99e41812a"
+								},
+								{
+									"key": "detailsId",
+									"value": "642b7d9ded3e51e0af6874b5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete details",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"players\":[\"mostafa7\",\"ziad3\",\"midosameh\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/rooms/:id/details/:detailsId",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"rooms",
+								":id",
+								"details",
+								":detailsId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64131e63aa9bce7b53e17dab"
+								},
+								{
+									"key": "detailsId",
+									"value": "642b7d9bed3e51e0af6874b3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Import CSV",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "MVP2022Pass",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/Users/ahmedTarik/Downloads/002020876368-billing-logs (1).csv"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"csv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "https://eu3.icafecloud.com/api/v2/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/javascript, */*; q=0.01"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.9,en-US;q=0.8,ar;q=0.7"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=UTF-8"
+					},
+					{
+						"key": "Cookie",
+						"value": "LicenseLang=en; langcode=en; save_license=true; license_name=002020876368"
+					},
+					{
+						"key": "Origin",
+						"value": "https://eu3.icafecloud.com"
+					},
+					{
+						"key": "Referer",
+						"value": "https://eu3.icafecloud.com/"
+					},
+					{
+						"key": "Sec-Fetch-Dest",
+						"value": "empty"
+					},
+					{
+						"key": "Sec-Fetch-Mode",
+						"value": "cors"
+					},
+					{
+						"key": "Sec-Fetch-Site",
+						"value": "same-origin"
+					},
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "licenseName=002020876368&staffName=owner&staffPassword=MVP2022&google_token=03AFY_a8XStFWuIWwrXW-MY9ZmLzM3uS8fGzXVVRnC68LHVs8QYhNld_iUMaI02U13MFe7im6hXDQjcdajYalbB7nd8xq0poYWIdInqT1JPO_WMRh7sE-TBu59Fn-vPQPuFGrBJk0MVNsxpsChVjhli7x7g0aiHMJBFInW3tM-lgo2-BOlQQ-4QoQPUGjcfW4fEsWydrCLyT9of3A7mHkraTt8AHMY87O9TAU8MCmPRbRpfbYSaNFvgnVrTsoeQmW1Y7WrpDyeKBoeP6O2qTYwigU6swq21awcMc4xtBtLKxgJOSn7HEYxNOC-s1CO-fw0V9WP7rrQ6GFD9cnB7TUZtdA3WnEfVLKNz64Nno6ikh-PWhpPAYxL-lh_bq23aIq7FxTAI9bMxFMHNEJBlunQouCLZbhASxvrKPbr_fmrpc4m_6q1XrDu3CqpIMENMVL0avcebZQZxKHlk1ngTY1yPLL538rscnhc_bAfcR7p3B5GmH_FA9DxHBNYBZ5b2pnkjogKPGg_1dBg&langcode=en"
+				},
+				"url": {
+					"raw": "https://eu3.icafecloud.com/api/v2/auth/login",
+					"protocol": "https",
+					"host": [
+						"eu3",
+						"icafecloud",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const body = pm.response.json();",
+							"pm.environment.set('accessToken', 'Bearer '+body.access_token);",
+							"",
+							"pm.environment.set('token', body.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"mvp\",\n    \"password\": \"MVP2022\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/login",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

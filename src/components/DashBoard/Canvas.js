@@ -46,8 +46,8 @@ const Canvas = () => {
           <a className={splitLocation[1] === "rooms" ?'nav-active p-4 my-3 rounded fs-5' : 'p-4 my-3 rounded fs-5'} href={"/rooms"}>
           Rooms 
           </a>
-          <a className={splitLocation[1] === "prizes" ?'nav-active p-4 my-3 rounded fs-5' : 'p-4 my-3 rounded fs-5'} href={"/prizes"}>
-          Prizes 
+          <a className={splitLocation[1] === "prizes" ?'nav-active p-4 my-3 rounded fs-5' : 'p-4 my-3 rounded fs-5'} href={"/add-players"}>
+          Add Players 
           </a>   
           <a className='logout-btn p-3 my-5 rounded fs-5' href={"/"} onClick={logout}>
           LOG OUT  
